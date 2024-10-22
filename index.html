@@ -791,4 +791,43 @@
      </div>
 
 </body>
+
+<script>
+    const sliderData = [
+      { url: './images/banner主图.png', alt: '主图' },
+      { url: './images/slider01.jpg', alt: '对人类来说会不会太超前了？'},
+      { url: './images/slider02.jpg', alt: '开启剑与雪的黑暗传说！'},
+      { url: './images/slider03.jpg', alt: '真正的jo厨出现了！'},
+      { url: './images/slider04.jpg', alt: '李玉刚：让世界通过B站看到东方大国文化' },
+      { url: './images/slider05.jpg', alt: '快来分享你的寒假日常吧~'},
+      { url: './images/slider06.jpg', alt: '哔哩哔哩小年YEAH'},
+      { url: './images/slider07.jpg', alt: '一站式解决你的电脑配置问题！！！'},
+      { url: './images/slider08.jpg', alt: '谁不想和小猫咪贴贴呢！'},
+    ]
+    const banner = document.querySelector('.banner')
+    const img = document.querySelector('.banner img')
+    let i = 0
+    function toggle(){
+        i++
+        if(i===sliderData.length){
+            i=0
+        }
+        img.src = sliderData[i].url
+    }
+
+    let timerId = setInterval(function(){
+        toggle()
+    },1000)
+
+    banner.addEventListener("mouseenter",function(){
+      clearInterval(timerId)
+    })
+
+    banner.addEventListener("mouseleave",function(){
+      clearInterval(timerId)//最好先关再开
+      timerId = setInterval(function(){
+        toggle()
+    },1000)
+    })
+</script>
 </html>
